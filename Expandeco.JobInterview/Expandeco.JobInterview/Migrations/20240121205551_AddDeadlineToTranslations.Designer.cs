@@ -3,38 +3,20 @@ using System;
 using Expandeco.JobInterview.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Expandeco.JobInterview.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240121205551_AddDeadlineToTranslations")]
+    partial class AddDeadlineToTranslations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.17");
-
-            modelBuilder.Entity("Expandeco.JobInterview.Data.Deadline", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DeadlineDateTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("DeadlineDateTimeString")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("ExpiredDeadline")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Deadline");
-                });
 
             modelBuilder.Entity("Expandeco.JobInterview.Data.Language", b =>
                 {
@@ -85,10 +67,7 @@ namespace Expandeco.JobInterview.Migrations
                     b.Property<int>("CreatedById")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("DeadlineId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("DeadlineString")
+                    b.Property<DateTime?>("Deadline")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("SourceLanguageId")
@@ -114,8 +93,6 @@ namespace Expandeco.JobInterview.Migrations
 
                     b.HasIndex("CreatedById");
 
-                    b.HasIndex("DeadlineId");
-
                     b.HasIndex("SourceLanguageId");
 
                     b.HasIndex("TargetLanguageId");
@@ -126,50 +103,48 @@ namespace Expandeco.JobInterview.Migrations
                         new
                         {
                             Id = 1,
-                            AssignedToId = 5,
-                            CreatedById = 9,
-                            SourceLanguageId = 1,
-                            TargetLanguageId = 3,
-                            Text = "Aut aliquid nihil modi.\nReiciendis repudiandae labore rem iusto in ipsam.\nItaque beatae accusantium atque qui ex hic voluptas.\nEt magni ratione omnis et.\nOfficiis dolore dolores.",
-                            Title = "nemo incidunt necessitatibus"
+                            CreatedById = 8,
+                            SourceLanguageId = 2,
+                            TargetLanguageId = 4,
+                            Text = "Nulla minus quis quia.",
+                            Title = "nobis voluptates architecto"
                         },
                         new
                         {
                             Id = 2,
-                            AssignedToId = 2,
-                            CreatedById = 9,
-                            SourceLanguageId = 1,
-                            TargetLanguageId = 4,
-                            Text = "Et pariatur et soluta esse. Beatae dolores nisi velit eligendi inventore nulla. Autem iste suscipit. Illo qui ipsa neque sapiente. Iure provident voluptas.",
-                            Title = "aspernatur totam id"
+                            AssignedToId = 7,
+                            CreatedById = 10,
+                            SourceLanguageId = 2,
+                            TargetLanguageId = 3,
+                            Text = "odit",
+                            Title = "sunt fugit atque"
                         },
                         new
                         {
                             Id = 3,
-                            AssignedToId = 5,
-                            CreatedById = 10,
-                            SourceLanguageId = 2,
-                            TargetLanguageId = 4,
-                            Text = "Voluptas id quia inventore.\nFugiat aut consequatur.\nVitae et et eos nihil laboriosam laboriosam.\nTotam ab inventore exercitationem corporis eum qui delectus blanditiis et.\nDolor et deleniti.\nDolore cumque blanditiis temporibus.",
-                            Title = "repellendus necessitatibus excepturi"
+                            CreatedById = 9,
+                            SourceLanguageId = 1,
+                            TargetLanguageId = 3,
+                            Text = "quod",
+                            Title = "modi sed qui"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedById = 8,
-                            SourceLanguageId = 1,
+                            CreatedById = 9,
+                            SourceLanguageId = 2,
                             TargetLanguageId = 3,
-                            Text = "alias",
-                            Title = "aperiam veritatis eaque"
+                            Text = "Doloremque ipsum enim in. Deserunt sunt quia fugit et error ducimus dolor quidem. Accusamus omnis esse delectus alias laborum quis ut ducimus explicabo.",
+                            Title = "illo omnis laudantium"
                         },
                         new
                         {
                             Id = 5,
                             CreatedById = 9,
-                            SourceLanguageId = 2,
-                            TargetLanguageId = 3,
-                            Text = "omnis",
-                            Title = "voluptatum est minus"
+                            SourceLanguageId = 1,
+                            TargetLanguageId = 4,
+                            Text = "Quae dignissimos harum nostrum.\nNam ipsa nobis eum impedit tempora nesciunt nulla inventore.\nUt maiores nobis hic voluptatem quasi ut minus.\nNobis animi doloremque.",
+                            Title = "ipsum quia est"
                         },
                         new
                         {
@@ -177,45 +152,46 @@ namespace Expandeco.JobInterview.Migrations
                             CreatedById = 9,
                             SourceLanguageId = 1,
                             TargetLanguageId = 4,
-                            Text = "Eum nostrum ut libero possimus.",
-                            Title = "beatae quo quia"
+                            Text = "iste",
+                            Title = "dolor fugit illo"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedById = 10,
+                            AssignedToId = 4,
+                            CreatedById = 8,
                             SourceLanguageId = 2,
                             TargetLanguageId = 4,
-                            Text = "Repellendus ipsa quia et sed.",
-                            Title = "tenetur quod harum"
+                            Text = "Omnis eveniet temporibus maiores consequuntur ut alias. Voluptas quis beatae ut officiis iure et harum in. Voluptatibus illum nihil pariatur quos quia rerum autem. Maiores praesentium maiores placeat. Cumque voluptatem ea quas.",
+                            Title = "culpa numquam explicabo"
                         },
                         new
                         {
                             Id = 8,
-                            AssignedToId = 7,
-                            CreatedById = 8,
-                            SourceLanguageId = 1,
+                            CreatedById = 10,
+                            SourceLanguageId = 2,
                             TargetLanguageId = 4,
-                            Text = "sit",
-                            Title = "repudiandae harum ut"
+                            Text = "Aliquid pariatur ab perferendis fugiat non dolor quae soluta distinctio.",
+                            Title = "et dolores eligendi"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedById = 9,
+                            CreatedById = 10,
                             SourceLanguageId = 2,
-                            TargetLanguageId = 4,
-                            Text = "Soluta delectus nesciunt quia libero in possimus omnis corrupti est.",
-                            Title = "quis vero praesentium"
+                            TargetLanguageId = 3,
+                            Text = "Laborum itaque iusto.\nEt atque dicta temporibus maiores.\nSit aut mollitia veniam cumque ipsam voluptatem.\nIllum quo placeat.\nQuaerat quia suscipit.\nPorro repudiandae sed qui.",
+                            Title = "voluptas vel nemo"
                         },
                         new
                         {
                             Id = 10,
+                            AssignedToId = 4,
                             CreatedById = 8,
-                            SourceLanguageId = 1,
+                            SourceLanguageId = 2,
                             TargetLanguageId = 4,
-                            Text = "Fugit necessitatibus velit iure porro provident. Quo asperiores repellat nobis ratione deserunt magni qui. Molestiae voluptas quos voluptas sequi. Perspiciatis ab ipsum tempore.",
-                            Title = "perferendis voluptatum ea"
+                            Text = "Repudiandae nam molestiae consequatur.",
+                            Title = "quaerat libero voluptatem"
                         });
                 });
 
@@ -242,61 +218,61 @@ namespace Expandeco.JobInterview.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Bohdan Šidlo",
+                            Name = "Vít Krajíček",
                             TypeId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Aurélia Ďuricová",
+                            Name = "Libuša Šoltésová",
                             TypeId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Bernard Slovák",
+                            Name = "Igor Dávid",
                             TypeId = 2
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Denis Turčok",
+                            Name = "Milota Dočolomanská",
                             TypeId = 2
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Nataša Pelikánová",
+                            Name = "Rastislav Cíger",
                             TypeId = 2
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Albín Ďuriš",
+                            Name = "Sidónia Kaliská",
                             TypeId = 2
                         },
                         new
                         {
                             Id = 7,
-                            Name = "Darina Jurkovičová",
+                            Name = "Drahomíra Masaryková",
                             TypeId = 2
                         },
                         new
                         {
                             Id = 8,
-                            Name = "Laura Rybníčeková",
+                            Name = "Jakub Slota",
                             TypeId = 3
                         },
                         new
                         {
                             Id = 9,
-                            Name = "Ferdinand Mojžiš",
+                            Name = "Dezider Jendek",
                             TypeId = 3
                         },
                         new
                         {
                             Id = 10,
-                            Name = "Hugo Finka",
+                            Name = "Dezider Šulc",
                             TypeId = 3
                         });
                 });
@@ -345,10 +321,6 @@ namespace Expandeco.JobInterview.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Expandeco.JobInterview.Data.Deadline", "Deadline")
-                        .WithMany()
-                        .HasForeignKey("DeadlineId");
-
                     b.HasOne("Expandeco.JobInterview.Data.Language", "SourceLanguage")
                         .WithMany()
                         .HasForeignKey("SourceLanguageId")
@@ -364,8 +336,6 @@ namespace Expandeco.JobInterview.Migrations
                     b.Navigation("AssignedTo");
 
                     b.Navigation("CreatedBy");
-
-                    b.Navigation("Deadline");
 
                     b.Navigation("SourceLanguage");
 
