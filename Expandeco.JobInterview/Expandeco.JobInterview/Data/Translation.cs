@@ -25,9 +25,12 @@ namespace Expandeco.JobInterview.Data
         
         public int? AssignedToId { get; set; }
 
+        public string DeadlineString { get; set; }
+
         public virtual Language SourceLanguage { get; set; }
         public virtual Language TargetLanguage { get; set; }
         public virtual User CreatedBy { get; set; }
         public virtual User AssignedTo { get; set; }
+        public virtual Deadline Deadline { get; set; }
     }
 }
