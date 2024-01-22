@@ -18,6 +18,9 @@ using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using Expandeco.JobInterview.Services;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Text.Json;
 
 namespace Expandeco.JobInterview
 {
@@ -34,7 +37,10 @@ namespace Expandeco.JobInterview
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlite($"Data Source=Data\\expandeco.sqlite"));
-            services.AddControllers();
+            //services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(
+                options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
