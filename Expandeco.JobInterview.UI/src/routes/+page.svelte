@@ -5,21 +5,15 @@
 	import { onMount } from "svelte";
 
 	let users = [];
-	//let selectedUser;
 	export let data;
-////////////////////////////////
-	/*onMount(() => {
-		axios
-			.get("users")
-			.then((result) => {
-				users = result.data;
-				if (users.length) selectedUser = users[0].id;
-			})
-			.catch((err) => console.log(err));
-	});*/
+	let selectedUser;
+	onMount(() => {
+		users = data.users;
+		selectedUser = data.selectedUser;
+	});
 
 	const handleLogin = () => {
-		const user = data.users.find((x) => x.id === data.selectedUser);
+		const user = users.find((x) => x.id === data.selectedUser);
 		if (user) {
 			axios.post("users/login?id=" + user.id).then((result) => {
 				userStore.set({
@@ -36,7 +30,7 @@
 	<div class="row justify-content-center">
 		<div class="col-md-3">
 			<div class="mb-3">
-				<select class="form-select" bind:value={data.selectedUser}>
+				<select class="form-select" bind:value={selectedUser}>
 					{#each users || [] as item}
 						<option value={item.id}
 							>{item.name} ({item.type.title})</option
