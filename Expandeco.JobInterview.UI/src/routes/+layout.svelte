@@ -4,9 +4,6 @@
 
 	import "../app.css";
 	import { goto } from "$app/navigation";
-
-	axios.defaults.baseURL = "https://localhost:5001";
-
 	let credentials;
 	userStore.subscribe((item) => {
 		credentials = item;
