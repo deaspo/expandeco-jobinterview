@@ -11,6 +11,7 @@
             <th scope="col">Assigned to</th>
             <th scope="col">Source language</th>
             <th scope="col">Target language</th>
+            <th scope="col">Deadline</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,15 @@
                 <td>{item.assignedTo ? item.assignedTo.name : ""}</td>
                 <td>{item.sourceLanguage.title}</td>
                 <td>{item.targetLanguage.title}</td>
+                <td>
+                    {#if item.deadline}
+                        {#if item.deadline.expiredDeadline === true}
+                            <span class="badge bg-secondary" >{item.deadlineString}</span>
+                        {:else}
+                            <span class="badge bg-info" >{item.deadlineString}</span>
+                        {/if}
+                    {/if}
+                </td>
             </tr>
         {/each}
     </tbody>
