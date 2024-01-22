@@ -1,26 +1,17 @@
 using Expandeco.JobInterview.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
- using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using Expandeco.JobInterview.Services;
 using Microsoft.AspNetCore.Http;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using System.Text.Json;
 
 namespace Expandeco.JobInterview
 {
@@ -37,7 +28,6 @@ namespace Expandeco.JobInterview
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlite($"Data Source=Data\\expandeco.sqlite"));
-            //services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(
                 options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
